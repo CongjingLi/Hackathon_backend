@@ -5,6 +5,7 @@ import com.citi.hackathon_backend.event.entity.Event;
 import com.google.gson.Gson;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class JsonToListEvents implements DynamoDBTypeConverter<String, Object> {
     private Gson gson = new Gson();
@@ -17,6 +18,6 @@ public class JsonToListEvents implements DynamoDBTypeConverter<String, Object> {
     @Override
     public Object unconvert(String s) {
         Event[] events=gson.fromJson(s, Event[].class);
-        return Arrays.stream(events).toList();
+        return List.of(events);
     }
 }

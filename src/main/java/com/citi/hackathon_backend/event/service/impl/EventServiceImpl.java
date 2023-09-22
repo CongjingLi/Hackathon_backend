@@ -80,7 +80,7 @@ public class EventServiceImpl implements EventService {
 
         Event[] events = document.getEventList().toArray(new Event[document.getCurrentEventPosition()]);
         events[event.getEventIndex()] = event;
-        document.setEventList(Arrays.stream(events).toList());
+        document.setEventList(List.of(events));
         //todo:save document
     }
 
