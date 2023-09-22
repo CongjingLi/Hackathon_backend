@@ -14,7 +14,7 @@ public interface UserService {
 
     UserInfo queryUserInfoById(String id);
 
-    Result importUser(@RequestParam("file") MultipartFile file);
+    Result importUser( MultipartFile file);
 
     List<UserInfo> queryAllUser();
 

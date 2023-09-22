@@ -26,7 +26,7 @@ public class UserController {
      * @return Result
      */
     @PostMapping(value = "/regist")
-    public Result regist(UserInfo user){
+    public Result regist(@RequestBody UserInfo user){
         return userService.regist(user);
     }
 
@@ -45,12 +45,12 @@ public class UserController {
 */
 
     @PostMapping(value = "/login")
-    public Result login(UserInfo user){
+    public Result login(@RequestBody UserInfo user){
         return userService.login(user);
     }
 
     @GetMapping(value = "/findUser")
-    public UserInfo findUser(UserInfo user){
+    public UserInfo findUser(@RequestBody  UserInfo user){
         return userService.queryUserInfoById(user.getId());
     }
 
