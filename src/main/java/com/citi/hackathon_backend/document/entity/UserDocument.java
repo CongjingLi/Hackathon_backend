@@ -1,6 +1,6 @@
 package com.citi.hackathon_backend.document.entity;
 
-import com.citi.hackathon.event.entity.Event;
+import com.citi.hackathon_backend.event.entity.Event;
 import lombok.Data;
 
 import java.util.Date;
