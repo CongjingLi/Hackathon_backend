@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
         result.setSuccess(false);
         result.setDetail(null);
         try {
-            UserInfo existUser = userRepository.findById(user.getId()).orElse(null);
+            UserInfo existUser = userRepository.findByUserName(user.getUserName());
             if(existUser != null){
                 //如果用户名已存在
                 result.setMsg("用户ID已存在");
@@ -48,8 +48,8 @@ public class UserServiceImpl implements UserService {
         result.setSuccess(false);
         result.setDetail(null);
         try {
-            UserInfo logUser=  userRepository.findById(user.getId()).orElse(null);
-            if(logUser == null||!(user.getPassword().equals(logUser.getPassword()))){
+            UserInfo logUser= userRepository.findByUserName(user.getUserName());
+            if(logUser.getId() == null||!(user.getPassword().equals(logUser.getPassword()))){
                 result.setMsg("用户名或密码错误");
             }else{
                 result.setMsg("登录成功");
@@ -67,16 +67,16 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Result importUser(@RequestParam("file") MultipartFile file)
+    public Result importUser(MultipartFile file)
     {
         Result result = new Result();
         List<UserInfo> userInfos = null;
-
         try
         {
             userInfos = UserDataUtil.excelToUsers(file.getInputStream());
             if (userInfos == null)
             {
+                System.out.println("文件没有数据或者用户名重复");
                 result.setMsg("批量注册失败，文件没有数据或者用户名重复");
                 return result;
             }
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService {
             for (int i = 0; i < userInfos.size(); i++)
             {
 
-                UserInfo userInfo = userRepository.findById(userInfos.get(i).getId()).orElse(null);
+                UserInfo userInfo = (UserInfo) userRepository.findById(userInfos.get(i).getId()).get();
                 if (userInfo != null)
                 {
                     result.setMsg("批量注册失败，用户名重复"+userInfo.getUserName()+"】与数据库中的用户名重名");
@@ -111,13 +111,14 @@ public class UserServiceImpl implements UserService {
         result.setMsg("批量注册成功");
         return result;
     }
-    @Override
-    public UserInfo queryUserInfoById(String id) {
-        return  userRepository.findById(id).orElse(null);
-    }
 
     @Override
     public List<UserInfo> queryAllUser() {
         return (List<UserInfo>) userRepository.findAll();
+    }
+
+    @Override
+    public UserInfo queryUserInfoById(String id) {
+        return (UserInfo) userRepository.findById(id).get();
     }
 }
