@@ -44,7 +44,7 @@ public class CrudController {
 
 		Map map = new HashMap<>();
 		map.put("organizatioName",organizatioName);
-		map.put("volunteers", volunteers);
+		map.put("volunteers", list);
 
 		return ResponseEntity.ok(map);
 	}
