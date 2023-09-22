@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/event")
+@CrossOrigin(origins = "*")
 public class EventController {
     @Autowired
     EventService eventService;

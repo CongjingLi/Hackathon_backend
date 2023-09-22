@@ -5,14 +5,12 @@ import com.citi.hackathon_backend.userInfo.service.UserService;
 import com.citi.hackathon_backend.userInfo.entity.Result;
 import com.citi.hackathon_backend.userInfo.entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/user")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
