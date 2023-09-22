@@ -15,5 +15,10 @@ public class SubEvent {
     private String createTime;
     private String completeTime;
     private String notificationReceiver;
+    private String createUserName;
     private EventStatus eventStatus;
+
+    public String convertToString() {
+        return String.format("org:%s, description:%s, create time:%s, event status", this.organization, this.description, this.createTime, this.eventStatus);
+    }
 }
