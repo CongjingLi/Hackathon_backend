@@ -11,4 +11,5 @@ public class UserInfo {
     private String address;//optional
     private String email;//optional
     private String organization;
+    private String organizationType;
 }

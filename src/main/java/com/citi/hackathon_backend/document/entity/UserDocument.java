@@ -15,6 +15,7 @@ public class UserDocument {
 
     private String createTime;
     private int currentEventPosition;
+    private String createUserName;
     private List<Event> eventList;
 
 }
