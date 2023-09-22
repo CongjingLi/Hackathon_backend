@@ -6,5 +6,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @org.socialsignin.spring.data.dynamodb.repository.EnableScan
+@Repository
 public interface EventRepository extends CrudRepository<Event, String> {
 }
