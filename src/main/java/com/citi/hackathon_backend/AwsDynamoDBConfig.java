@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
-public class AwsDymanoDBConfig {
+public class AwsDynamoDBConfig {
 
     @Value("${aws.dynamodb.accessKey}")
     private String accessKey;
