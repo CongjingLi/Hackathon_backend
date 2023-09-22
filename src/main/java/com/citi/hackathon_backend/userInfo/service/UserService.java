@@ -5,6 +5,8 @@ import com.citi.hackathon_backend.userInfo.entity.UserInfo;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 public interface UserService {
     public Result regist(UserInfo user);
 
@@ -12,5 +14,8 @@ public interface UserService {
 
     UserInfo queryUserInfoById(String id);
 
-    Result importStudent(@RequestParam("file") MultipartFile file);
+    Result importUser(@RequestParam("file") MultipartFile file);
+
+    List<UserInfo> queryAllUser();
+
 }

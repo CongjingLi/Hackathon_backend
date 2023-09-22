@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/user")
 @CrossOrigin(origins = "*")
@@ -28,24 +30,38 @@ public class UserController {
         return userService.regist(user);
     }
 
-    /**
-     * 登录
-     * @param user 参数封装
-     * @return Result
-     */
+    /*@PostMapping(value = "/regist")
+    public Result regist(UserInfo user, Principal principal){
+        Result result = new Result();
+        if (principal!= null){
+            if (userService.queryUserInfoById(principal.getName()).getAuthority().equals("admin")){
+                return userService.regist(user);
+            }
+        }
+        result.setMsg("Insufficient permissions");
+        return result;
+
+    }
+*/
+
     @PostMapping(value = "/login")
     public Result login(UserInfo user){
         return userService.login(user);
     }
 
-    @PostMapping(value = "/findUser")
+    @GetMapping(value = "/findUser")
     public UserInfo findUser(UserInfo user){
         return userService.queryUserInfoById(user.getId());
     }
+
+    @GetMapping(value = "/findAllUser")
+    public List<UserInfo> findAllUser(){
+        return userService.queryAllUser();
+    }
     @PostMapping("/UserImport")
-    public Result importStudent(@RequestParam("file") MultipartFile file)
+    public Result importUser(@RequestParam("file") MultipartFile file)
     {
-        return userService.importStudent(file);
+        return userService.importUser(file);
     }
 
 
