@@ -18,13 +18,13 @@ public class DocumentController {
     }
 
 
-    @GetMapping(value = "/getDocument")
-    public UserDocument getDocumentById(@PathVariable String id){
+    @GetMapping(value = "/getDocumentById")
+    public UserDocument getDocumentById(@RequestParam String id){
         return documentService.getDocumentById(id);
     }
 
     @GetMapping(value = "/getDocument/byname")
-    public UserDocument getDocumentByName(@PathVariable String name){
+    public UserDocument getDocumentByName(@RequestParam String name){
         return documentService.getDocumentByName(name);
     }
 

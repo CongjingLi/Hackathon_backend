@@ -42,24 +42,24 @@ public class EventController {
     }
 
     @GetMapping(value = "/queryEventById")
-    List<Event> getEventById(@PathVariable Long id){
+    List<Event> getEventById(@RequestParam Long id){
         return eventService.getEvents();
     }
 
 
 //    @GetMapping(value = "/test")
 //    String test(){
-////        Event event1 = new Event();
-////        event1.setAssignee("Lee");
-////        event1.setEventIndex(0);
-////        event1.setEventStatus(EventStatus.COMPLETED);
-////        event1.setDescription("create document");
-////        event1.setCompleteTime("2022-15-13");
-////        event1.setCreateTime("2022-15-20");
-////        event1.setOrganization("Springboard");
-////        event1.setDocumentId("1514L");
-////        event1.setNotificationReceiver("Lee");
-////        return eventRepository.save(event1).toString();
+//        Event event1 = new Event();
+//        event1.setAssignee("Lee");
+//        event1.setEventIndex(0);
+//        event1.setEventStatus(EventStatus.COMPLETED);
+//        event1.setDescription("create document");
+//        event1.setCompleteTime("2022-15-13");
+//        event1.setCreateTime("2022-15-20");
+//        event1.setOrganization("Springboard");
+//        event1.setDocumentId("1514L");
+//        event1.setNotificationReceiver("Lee");
+//        return eventRepository.save(event1).toString();
 //        return eventRepository.findById("78abb8f3-1957-47f4-a5c2-90a441eb432f").toString();
 //
 //    }
