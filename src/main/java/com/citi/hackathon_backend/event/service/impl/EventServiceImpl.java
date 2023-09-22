@@ -35,12 +35,7 @@ public class EventServiceImpl implements EventService {
         event.setEventStatus(EventStatus.CREATED);
         event.setCreateTime(SDF.format(new Date()));
 
-        String content = String.format(eventCreatedMessage, event.convertToString(), event.getId());
-        if (StringUtil.isNull(event.getAssignee())) {
-            notifyService.notifyAll(content, event.getOrganization());
-        } else {
-            notifyService.notifyPeople(event.getAssignee(), content);
-        }
+
 
         if (StringUtil.isNull(event.getNotificationReceiver())) {
             event.setNotificationReceiver(event.getCreateUserName());
@@ -55,6 +50,14 @@ public class EventServiceImpl implements EventService {
         eventList.add(addedEvent);
         addedEvent.setEventIndex(document.getCurrentEventPosition());
         document.setCurrentEventPosition(document.getCurrentEventPosition() + 1);
+
+        String content = String.format(eventCreatedMessage, addedEvent.convertToString(), addedEvent.getId());
+        if (StringUtil.isNull(event.getAssignee())) {
+            notifyService.notifyAll(content, event.getOrganization());
+        } else {
+            notifyService.notifyPeople(event.getAssignee(), content);
+        }
+
         documentRepository.save(document);
         return eventRepository.save(addedEvent);
     }
