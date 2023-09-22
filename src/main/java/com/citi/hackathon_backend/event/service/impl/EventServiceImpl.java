@@ -31,11 +31,6 @@ public class EventServiceImpl implements EventService {
     public Event createNewEvent(Event event) {
         event.setEventStatus(EventStatus.CREATED);
         event.setCreateTime(SDF.format(new Date()));
-        if (event.getSubEventList() == null) {
-            event.setCurrentSubEventPosition(0);
-        } else {
-            event.setCurrentSubEventPosition(event.getSubEventList().size());
-        }
 
         String content = String.format(eventCreatedMessage, event.convertToString(), event.getId());
         if (StringUtil.isNull(event.getAssignee())) {
