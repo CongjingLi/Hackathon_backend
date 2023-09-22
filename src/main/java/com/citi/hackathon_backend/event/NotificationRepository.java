@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @org.socialsignin.spring.data.dynamodb.repository.EnableScan
+@Repository
 public interface NotificationRepository extends CrudRepository<Notification, String> {
     List<Notification> findByUserName(String userName);
 }
