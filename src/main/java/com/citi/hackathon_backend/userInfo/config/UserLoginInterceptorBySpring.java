@@ -1,4 +1,5 @@
-package com.citi.hackathon_backend.UserInfo.UserRoleAuthorizationInterceptor;
+/*
+package com.citi.hackathon_backend.userInfo.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,4 +43,4 @@ public class UserLoginInterceptorBySpring extends HandlerInterceptorAdapter{
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception{
         System.out.println("afterCompletion...");
     }
-}
+}*/

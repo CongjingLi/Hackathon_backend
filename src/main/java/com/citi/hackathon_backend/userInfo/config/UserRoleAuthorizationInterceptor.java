@@ -1,3 +1,4 @@
+/*
 package com.citi.hackathon_backend.userInfo.userRoleAuthorizationInterceptor;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -29,4 +30,4 @@ public class UserRoleAuthorizationInterceptor extends HandlerInterceptorAdapter 
         // 403表示资源不可用。服务器理解用户的请求，但是拒绝处理它，通常是由于权限的问题
         response.sendError(403);
     }
-}
+}*/
