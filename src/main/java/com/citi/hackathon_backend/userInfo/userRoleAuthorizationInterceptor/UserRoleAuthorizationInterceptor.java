@@ -1,4 +1,4 @@
-package com.citi.hackathon_backend.UserInfo.UserRoleAuthorizationInterceptor;
+package com.citi.hackathon_backend.userInfo.userRoleAuthorizationInterceptor;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
