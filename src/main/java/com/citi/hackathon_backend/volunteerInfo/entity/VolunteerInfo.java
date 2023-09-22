@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class VolunteerInfo {
-    private Long id;
+    private String id;
     private String nickName;
     private String address;
     private String email;//optional

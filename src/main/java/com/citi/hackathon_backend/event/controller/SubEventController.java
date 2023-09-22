@@ -19,7 +19,7 @@ public class SubEventController {
     }
 
     @PostMapping(value = "/updateSubEventStatus")
-    String createSubEvent(@RequestParam(name = "eventId") Long eventId, @RequestParam int subEventIndex, @RequestParam String status) {
+    String createSubEvent(@RequestParam(name = "eventId") String eventId, @RequestParam int subEventIndex, @RequestParam String status) {
         try {
             subEventService.updateSubEventStatus(eventId, subEventIndex, status);
         } catch (Exception e) {
@@ -30,12 +30,12 @@ public class SubEventController {
     }
 
     @GetMapping(value = "/querySubeventById")
-    SubEvent querySubeventById(@PathVariable Long id) {
+    SubEvent querySubeventById(@PathVariable String id) {
         return subEventService.querySubeventById(id);
     }
 
     @GetMapping(value = "/querySubeventByEventId")
-    List<SubEvent> querySubeventByEventId(@PathVariable Long eventId) {
+    List<SubEvent> querySubeventByEventId(@PathVariable String eventId) {
         return subEventService.querySubeventByEventId(eventId);
     }
 

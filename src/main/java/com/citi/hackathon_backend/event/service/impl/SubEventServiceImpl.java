@@ -66,7 +66,7 @@ public class SubEventServiceImpl implements SubEventService {
     }
 
     @Override
-    public void updateSubEventStatus(Long eventId, int subEventIndex, String status) {
+    public void updateSubEventStatus(String eventId, int subEventIndex, String status) {
         System.out.println(this.getClass()+"info:start update status for "+eventId+"subevent is"+subEventIndex);
         Event event = eventRepository.findById(eventId).get();
         SubEvent subEvent = event.getSubEventList().get(subEventIndex);
@@ -105,12 +105,12 @@ public class SubEventServiceImpl implements SubEventService {
     }
 
     @Override
-    public SubEvent querySubeventById(Long id) {
+    public SubEvent querySubeventById(String id) {
         return subEventRepository.findById(id).get();
     }
 
     @Override
-    public List<SubEvent> querySubeventByEventId(Long eventId) {
+    public List<SubEvent> querySubeventByEventId(String eventId) {
         Event event = eventRepository.findById(eventId).get();
         return event.getSubEventList();
     }

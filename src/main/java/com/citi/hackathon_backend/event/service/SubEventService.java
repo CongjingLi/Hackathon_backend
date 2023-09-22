@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface SubEventService {
     public SubEvent createSubEvent(SubEvent subEvent);
-    public void updateSubEventStatus(Long eventId, int subEventIndex, String status);
+    public void updateSubEventStatus(String eventId, int subEventIndex, String status);
 
-    public SubEvent querySubeventById(Long id);
-    public List<SubEvent> querySubeventByEventId(Long eventId);
+    public SubEvent querySubeventById(String id);
+    public List<SubEvent> querySubeventByEventId(String eventId);
     public List<SubEvent> querySubevents();
 }

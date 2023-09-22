@@ -61,7 +61,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void updateEventStatus(Long documentId, int eventIndex, String status) {
+    public void updateEventStatus(String documentId, int eventIndex, String status) {
         UserDocument document = new UserDocument();//todo:query from db
         Event event = document.getEventList().get(eventIndex);
         String content = "";
