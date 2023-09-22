@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableDynamoDBRepositories({"com.citi.hackathon_backend.event","com.citi.hackathon_backend.volunteerInfo","com.citi.hackathon_backend.org","com.citi.hackathon_backend.login"})
+@EnableDynamoDBRepositories({"com.citi.hackathon_backend.event","com.citi.hackathon_backend.volunteerInfo","com.citi.hackathon_backend.org","com.citi.hackathon_backend.login","com.citi.hackathon_backend.userInfo","com.citi.hackathon_backend.document"})
 public class HackathonBackendApplication {
 
 	public static void main(String[] args) {
