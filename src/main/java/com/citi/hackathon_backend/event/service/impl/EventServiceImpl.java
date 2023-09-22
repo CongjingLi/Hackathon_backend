@@ -1,5 +1,6 @@
 package com.citi.hackathon_backend.event.service.impl;
 
+import com.citi.hackathon_backend.document.DocumentRepository;
 import com.citi.hackathon_backend.document.entity.UserDocument;
 import com.citi.hackathon_backend.event.EventRepository;
 import com.citi.hackathon_backend.event.StringUtil;
@@ -25,6 +26,8 @@ public class EventServiceImpl implements EventService {
     EventRepository eventRepository;
     @Autowired
     NotifyService notifyService;
+    @Autowired
+    DocumentRepository documentRepository;
     private SimpleDateFormat SDF = new SimpleDateFormat("HH:mm dd-MM-yyyy");
 
     @Override
@@ -43,21 +46,22 @@ public class EventServiceImpl implements EventService {
             event.setNotificationReceiver(event.getCreateUserName());
         }
 
-        UserDocument document = new UserDocument();//todo:query by id from db
+        UserDocument document = documentRepository.findById(event.getDocumentId()).get();
         List<Event> eventList = document.getEventList();
         if (eventList == null) {
             eventList = new ArrayList<>();
         }
-        eventList.add(event);
-        event.setEventIndex(document.getCurrentEventPosition());
+        Event addedEvent = eventRepository.save(event);
+        eventList.add(addedEvent);
+        addedEvent.setEventIndex(document.getCurrentEventPosition());
         document.setCurrentEventPosition(document.getCurrentEventPosition() + 1);
-//todo:save document
-        return eventRepository.save(event);
+        documentRepository.save(document);
+        return eventRepository.save(addedEvent);
     }
 
     @Override
     public void updateEventStatus(String documentId, int eventIndex, String status) {
-        UserDocument document = new UserDocument();//todo:query from db
+        UserDocument document = documentRepository.findById(documentId).get();
         Event event = document.getEventList().get(eventIndex);
         String content = "";
         switch (status) {
@@ -80,8 +84,8 @@ public class EventServiceImpl implements EventService {
 
         Event[] events = document.getEventList().toArray(new Event[document.getCurrentEventPosition()]);
         events[event.getEventIndex()] = event;
-        document.setEventList(List.of(events));
-        //todo:save document
+        document.setEventList(new ArrayList(List.of(events)));
+        documentRepository.save(document);
     }
 
     @Override
