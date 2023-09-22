@@ -1,6 +1,6 @@
 package com.citi.hackathon_backend.controller;
 
-import com.citi.hackathon_backend.login.entity.UserInfo;
+import com.citi.hackathon_backend.userInfo.entity.UserInfo;
 import com.citi.hackathon_backend.org.entity.Organization;
 import com.citi.hackathon_backend.org.repository.OrgRepository;
 import com.citi.hackathon_backend.volunteerInfo.entity.VolunteerInfo;
